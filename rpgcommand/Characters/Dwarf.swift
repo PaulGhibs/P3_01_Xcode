@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Dwarf: Character {
+ class Dwarf: Character {
     
 
     

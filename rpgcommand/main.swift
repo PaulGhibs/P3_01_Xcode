@@ -7,5 +7,8 @@
 
 import Foundation
 
-var game = Game()
-game.printWelcome()
+// Players game launch
+
+var gameLaunch = Game()
+
+gameLaunch.launch()
