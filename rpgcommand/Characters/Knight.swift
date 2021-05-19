@@ -14,6 +14,6 @@ internal class Knight: Character {
         super.init(charName: fighterName)
       life = 70
 
-      self.weapon = Sword()
+      self.weapon = Hammer()
     }
 }

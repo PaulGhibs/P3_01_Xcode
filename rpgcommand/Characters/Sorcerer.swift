@@ -13,7 +13,7 @@ internal class Sorcerer: Character {
         super.init(charName: fighterName)
       life = 50
 
-      self.weapon = Sword()
+      self.weapon = Wand()
     }
     
     override func cureOthers() -> Bool {

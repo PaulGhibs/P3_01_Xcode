@@ -14,7 +14,7 @@ internal class Fairy: Character {
         super.init(charName: fighterName)
       life = 70
 
-      self.weapon = Sword()
+      self.weapon = IceJet()
     }
     
     override func cureOthers() -> Bool {

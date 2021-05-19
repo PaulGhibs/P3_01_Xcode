@@ -12,7 +12,6 @@ class Game  {
     // Tab Players for Player 1️⃣ & 2️⃣ / Instances for stats
     let pOne = Player()
     let pTwo = Player()
-    let stats = Stats()
     
     // Stats, lifepoints, and damage
     var damageDone = 0
@@ -32,21 +31,30 @@ class Game  {
     // Present Character to Player 1️⃣
     
     func characterPresentation() {
-        print("\nWarrior 🥷: \(Warrior(charName: "  🥷").life) life and a \(Sword().hitGiven) hit damages.\nSorcerer 🧙‍♂️: \(Sorcerer(charName: "  🧙‍♂️").life) life and a \(Wand().hitGiven) life keeps for an allie.\nKnight 🏇: \(Knight(charName: "  🏇").life) life and a \(Hammer().hitGiven) hits.\nDwarf 👹: \(Dwarf(charName: "  👹").life) life and a \(Axe().hitGiven) hits.\nFairy 🧚‍♀️: \(Fairy(charName: "  🧚‍♀️").life) life and a \(Knife().hitGiven) hits.\nDemon 😈: \(Evil(charName: " 😈").life) life and a \(IceJet().hitGiven) hits.")
-
+    
+        print("""
+          
+          1. Warrior 🥷 : \(Warrior(charName: "  🥷").life) life and a 🗡\(Sword().hitGiven)  hit damages.
+          2. Sorcerer 🧙‍♂️ : \(Sorcerer(charName: "  🧙‍♂️").life) life and a 🪄\(Wand().hitGiven) life keeps for an allie.
+          3. Knight 🏇: \(Knight(charName: "  🏇").life) life and a 🔨\(Hammer().hitGiven) hits.
+          4. Dwarf 👹: \(Dwarf(charName: "  👹").life) life and a 🪓\(Axe().hitGiven) hits.
+          5. Fairy 🧚‍♀️: \(Fairy(charName: "  🧚‍♀️").life) life and a 🔪\(Knife().hitGiven) hits.
+          6. Demon 😈: \(Evil(charName: "  😈").life) life and a ❄️\(IceJet().hitGiven) hits.
+          
+          """)
     }
     
     // Choose character player : 1️⃣ & 2️⃣
     func playerTeamsSetUp(){
-        print("\n\nPlayer 1️⃣, 👉 You can go")
+        print("\n\n\n--- Player 1️⃣, 👉 You can go ---\n")
         // Player 1 makes his team
         let pOneFightersNameList = pOne.createTeam(listCharactersName: [""])
         
-        print("\n\nPlayer 2️⃣, 👉 You can go")
+        print("\n\n\n--- Player 2️⃣, 👉 You can go ---\n")
         // Player 2 makes his team
         _ = pTwo.createTeam(listCharactersName: pOneFightersNameList)
         
-        print("\n\nPlayer 1️⃣ and Player 2️⃣ teams are set👨‍👦‍👦\n\n ⚱️ You're going to fight now 🏹⚔️ !!!\n")
+        print("\n\n\n\n--- Player 1️⃣ and Player 2️⃣ teams are set👨‍👦‍👦 --- \n\n!!! ⚱️ You're going to fight now 🏹⚔️ !!!\n\n")
         
     }
     
@@ -76,9 +84,9 @@ class Game  {
           else {
             character.weapon = SpecialSword()
           }
-          print("\n\n\n 🍀 🌀A special chest Appeared🍀 🌀  \n\nYour weapon has now a \(character.weapon!.hitGiven) attack points ⚔️")
+          print("\n\n\n 🍀 🌀  A special chest Appeared 🍀 🌀  \n\nYour weapon has now a \(character.weapon!.hitGiven) attack points ⚔️")
 
-          // Variable stats
+          // Variable for game statistics
           magicWeaponTrigger += 1
         }
     }
@@ -114,11 +122,11 @@ class Game  {
 
         // Life points stick to zero after an attack instead of going negative
         if opp.life > 0 {
-          print("\n \(opp.name) has been attacked.🤺 \(opp.name) life ❤️ \(opp.life) points is now remaining.")
+          print("\n\(opp) \(opp.name) has been attacked.🤺 \(opp.name) life❤️ is now remaining.")
         }
         else {
           opp.life = 0
-          print("\n\(opp.name) has 0️⃣ life💔 point remaining.")
+          print("\n\(opp) \(opp.name) has 0️⃣ life💔 point remaining.")
         }
         // Variables for statistics
         lifeTook += character.weapon!.hitGiven
@@ -132,28 +140,31 @@ class Game  {
     }
     
     
-    // Loop for chosen characters
     
     func playersLoop(playerTurn: Player, opp: Player) {
-        print("\n\nWith what characters 🤺 you want to play ?\n")
+      
+        
+        print("\n\n--- With what characters 🤺 you want to play ? ---\n")
         // Players see the characters chosen
         playerTurn.presentCharacter()
         // Switch to choose the action fighter
         let character = playerTurn.switchCaracter()
-        print("\n\nYou have chosen \(character.name) with a \(character.weapon!.hitGiven) attack points \(String(describing: character.weapon!)).")
+        print("\n\nYou have chosen \(character.name) with a \(character.weapon!.hitGiven) attack points and this weapon  : \(character.weapon!).")
+
         // When the lucky dice is thrown in game to randomly get a stronger weapon
         if triggerRandomChest(character) == false {
           randomChest(for: character)
         }
+
         // If the Wizard was chosen, the player chooses one of his fighters to give life points back to
         if character.cureOthers() {
-          print("\n\nOne of your characters is dying with who you want to revive❤️ him ?? ")
+          print("\n\n--- Which one of your characters you want to give life ❤️ points back to? ---")
           playerTurn.presentCharacter()
             cureOthers(with: character, on: playerTurn.switchCaracter())
         }
           // If not the Wizard, the player chooses a character to strike
         else {
-          print("\n\nWhich one of your ennemies you want to attack? 🏹 ")
+          print("\n\n--- Which one of your ennemies you want to attack? 🏹 ---")
           opp.presentCharacter()
             attack(with: character, on: opp.switchCaracter())
         }
@@ -161,37 +172,80 @@ class Game  {
     
     // 🔁
     
-     func gameLoop(){
+    fileprivate func gameLoop(){
         var isPlayerOneTurn = true
+
         while pOne.checkWhoLeft() && pTwo.checkWhoLeft() {
           if isPlayerOneTurn {
-            print("\n\nPlayer 1️⃣, 👉 Your turn!")
+
+            print("\n\n--- Player 1️⃣ ,👉 YOUR TURN ! ---")
             playersLoop(playerTurn: pOne, opp: pTwo)
           }
           else {
-            print("\n\nPlayer 2️⃣, 👉 Your turn ! ")
-            playersLoop(playerTurn: pOne, opp: pTwo)
+            print("\n\n--- Player 2️⃣, 👉 YOUR TURN ! ---")
+            playersLoop(playerTurn: pTwo, opp: pOne)
           }
+
           isPlayerOneTurn = !isPlayerOneTurn
           turn += 1
         }
         
-        
     }
     
-//    func leaveOrLaunchNew(){
-//        print("\n\n Let's do another one ? \n\n Press 1️⃣ ")
-//        print("\n\n Want to go 🔜? \n\nAppuyez sur 2 ")
-//    }
+    fileprivate func endgame() {
+      if pOne.checkWhoLeft() {
+        print("\n\n 👏 Congratulations Player 1️⃣ 🥇! You win 🥇🥇🥇! \n\n")
+      }
+      else {
+        print("\n\n 👏 Congratulations Player 2️⃣ 🥇! You win🥇🥇🥇! \n\n")
+      }
+    }
+
+    // This is where the game statistics are grouped to be displayed on screen
+    fileprivate func printstats() {
+      var player1TotalTurn = 0
+      var player2TotalTurn = 0
+      
+      // Calculate the time each player has played a turn
+      if pOne.checkWhoLeft() {
+        player1TotalTurn = turn / 2 + 1
+      }
+      else {
+        player1TotalTurn = turn / 2
+      }
+      if pTwo.checkWhoLeft() {
+        player2TotalTurn = turn / 21
+      }
+      else {
+        player2TotalTurn = turn / 2
+      }
+
+      print("""
+        
+        -- Stats 📈 --
+        
+                
+                - 1️⃣ Turns:   \(player1TotalTurn)
+                - 2️⃣ Turns:   \(player2TotalTurn)
+                - ⚔️Attacks :            \(damageDone)
+                - Life Given → :      \(lifeGive)
+                - Sorcerers Heals points used:  \(lifeTook)
+                - Life Back:   \(lifeWins)
+                - 💣🧨🪓Magic Weapon Triggers:   \(magicWeaponTrigger)
+                - 🪦 deadsPeople:    \(isDead)
+        
+        
+        """)
+    }
+
     
     // 🎮
     func launch() {
         welcomePrint()
         playerTeamsSetUp()
         gameLoop()
-        stats.victoryMessage()
-        stats.printStats()
-        
+        endgame()
+        printstats()
         
     }
     

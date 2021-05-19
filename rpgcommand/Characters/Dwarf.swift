@@ -13,6 +13,6 @@ internal class Dwarf: Character {
         super.init(charName: fighterName)
       life = 40
 
-      self.weapon = Sword()
+      self.weapon = Knife()
     }
 }

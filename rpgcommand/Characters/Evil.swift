@@ -14,6 +14,6 @@ internal class Evil: Character {
         super.init(charName: fighterName)
       life = 60
 
-      self.weapon = Sword()
+      self.weapon = Axe()
     }
 }
