@@ -13,6 +13,19 @@ internal class Sword: Weapon {
 
   init() {
     super.init(hitGiven: 10)
+    self.name = "Sword"
   }
 }
+
+
+internal class SpecialSword: Weapon {
+
+  init() {
+    super.init(hitGiven: 20)
+    self.name = "SpecialSword"
+
+  }
+}
+
+
 

@@ -12,8 +12,11 @@ import Foundation
 internal class Weapon {
 
   var hitGiven: Int
+  var name: String?
 
   init(hitGiven: Int) {
     self.hitGiven = hitGiven
+    self.name = ""
+    
   }
 }

@@ -23,7 +23,6 @@
 		61B90042264E7CC500F05A51 /* Axe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B90041264E7CC500F05A51 /* Axe.swift */; };
 		61B9004A264E8CD400F05A51 /* Sorcerer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B90049264E8CD400F05A51 /* Sorcerer.swift */; };
 		61B9004C264E8CE800F05A51 /* Dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B9004B264E8CE800F05A51 /* Dwarf.swift */; };
-		61B90050264E8D4000F05A51 /* RandomWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B9004F264E8D4000F05A51 /* RandomWeapon.swift */; };
 		61B90052264E8DBE00F05A51 /* Hammer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B90051264E8DBD00F05A51 /* Hammer.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +56,6 @@
 		61B90041264E7CC500F05A51 /* Axe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axe.swift; sourceTree = "<group>"; };
 		61B90049264E8CD400F05A51 /* Sorcerer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorcerer.swift; sourceTree = "<group>"; };
 		61B9004B264E8CE800F05A51 /* Dwarf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dwarf.swift; sourceTree = "<group>"; };
-		61B9004F264E8D4000F05A51 /* RandomWeapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomWeapon.swift; sourceTree = "<group>"; };
 		61B90051264E8DBD00F05A51 /* Hammer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hammer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,7 +122,6 @@
 				611675802652CF9300FAFBB2 /* Wand.swift */,
 				618A5B6A2653FFB400DDBFA4 /* IceJet.swift */,
 				61B90051264E8DBD00F05A51 /* Hammer.swift */,
-				61B9004F264E8D4000F05A51 /* RandomWeapon.swift */,
 			);
 			path = Weapons;
 			sourceTree = "<group>";
@@ -139,6 +136,7 @@
 				61B90027264E7AF300F05A51 /* Sources */,
 				61B90028264E7AF300F05A51 /* Frameworks */,
 				61B90029264E7AF300F05A51 /* CopyFiles */,
+				618A5B6C2655952200DDBFA4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -181,6 +179,26 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		618A5B6C2655952200DDBFA4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		61B90027264E7AF300F05A51 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -202,7 +220,6 @@
 				618A5B692653EF4D00DDBFA4 /* Knife.swift in Sources */,
 				61B9002F264E7AF300F05A51 /* main.swift in Sources */,
 				61B90052264E8DBE00F05A51 /* Hammer.swift in Sources */,
-				61B90050264E8D4000F05A51 /* RandomWeapon.swift in Sources */,
 				61B90038264E7C1300F05A51 /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,11 +8,10 @@
 import Foundation
 
 
-class Game  {
+class Game {
     // Tab Players for Player 1️⃣ & 2️⃣ / Instances for stats
     let pOne = Player()
     let pTwo = Player()
-    
     // Stats, lifepoints, and damage
     var damageDone = 0
     var lifeTook = 0
@@ -21,17 +20,14 @@ class Game  {
     var magicWeaponTrigger = 0
     var turn = 0
     var isDead = 0
-    
-    
     // Welcoming
     func welcomePrint() {
-        print("👋 Welcome On RPGCommand 🎲 ⚔️ 🎲 \n\nTo begin you will be prompt to select 3️⃣ characters in the list,by typing a number.\n\nWhen you'll choose one we will ask you a name for the character. \n\n⛔️ If you attend to use the same name for each it's not possible ⛔️")
+    print("👋 Welcome On RPGCommand 🎲 ⚔️ 🎲")
+        print("\n\nTo begin you will be prompt to select 3️⃣ characters in the list by typing a number.")
+        print("\n\nWhen you'll choose one we will ask you a name for the character. \n\n⛔️ If you attend to use the same name for each it's not possible ⛔️")
     }
-    
     // Present Character to Player 1️⃣
-    
     func characterPresentation() {
-    
         print("""
           
           1. Warrior 🥷 : \(Warrior(charName: "  🥷").life) life and a 🗡\(Sword().hitGiven)  hit damages.
@@ -40,116 +36,93 @@ class Game  {
           4. Dwarf 👹: \(Dwarf(charName: "  👹").life) life and a 🪓\(Axe().hitGiven) hits.
           5. Fairy 🧚‍♀️: \(Fairy(charName: "  🧚‍♀️").life) life and a 🔪\(Knife().hitGiven) hits.
           6. Demon 😈: \(Evil(charName: "  😈").life) life and a ❄️\(IceJet().hitGiven) hits.
-          
           """)
     }
-    
     // Choose character player : 1️⃣ & 2️⃣
-    func playerTeamsSetUp(){
+    func playerTeamsSetUp() {
         print("\n\n\n--- Player 1️⃣, 👉 You can go ---\n")
         // Player 1 makes his team
         let pOneFightersNameList = pOne.createTeam(listCharactersName: [""])
-        
         print("\n\n\n--- Player 2️⃣, 👉 You can go ---\n")
         // Player 2 makes his team
         _ = pTwo.createTeam(listCharactersName: pOneFightersNameList)
-        
-        print("\n\n\n\n--- Player 1️⃣ and Player 2️⃣ teams are set👨‍👦‍👦 --- \n\n!!! ⚱️ You're going to fight now 🏹⚔️ !!!\n\n")
-        
+        print("\n\n\n\n--- Player 1️⃣ and Player 2️⃣ teams are set👨‍👦‍👦 --- \n\n!!! 🎯 You're going to fight now 🏹⚔️ !!!\n\n")
     }
     
     // Random Weapon Magic
-    
-     func randomChest(for character: Character){
+     func randomChest(for character: Character) {
         let randomChestOnGame = Int(arc4random_uniform(6))
 
         if randomChestOnGame == 3 {
 
           if character is Warrior {
             character.weapon = SpecialSword()
-          }
-          else if character is Sorcerer {
+          } else if character is Sorcerer {
             character.weapon = SpecialWand()
-          }
-          else if character is Knight {
+          } else if character is Knight {
             character.weapon = SpecialHammer()
-          }
-          else if character is Fairy {
+          } else if character is Fairy {
             character.weapon = SpecialKnife()
-          }
-          
-          else if character is Evil {
+          } else if character is Evil {
             character.weapon = SpecialIceJet()
-          }
-          else {
+          } else {
             character.weapon = SpecialSword()
           }
-          print("\n\n\n 🍀 🌀  A special chest Appeared 🍀 🌀  \n\nYour weapon has now a \(character.weapon!.hitGiven) attack points ⚔️")
+         print("\n\n\n 🍀 🌀 A special chest Appeared 🍀 🌀  \n\nYour weapon has now a \(character.weapon!.hitGiven) attack points ⚔️")
 
           // Variable for game statistics
           magicWeaponTrigger += 1
         }
     }
-    
     // Trigger the chest for magic weapon
-     func triggerRandomChest(_ character: Character) -> Bool{
-        if character.weapon is SpecialSword || character.weapon is SpecialWand || character.weapon is SpecialAxe  || character.weapon is SpecialIceJet  || character.weapon is SpecialHammer  || character.weapon is SpecialKnife {
+     func triggerRandomChest(_ character: Character) -> Bool {
+        if character.weapon is SpecialSword || character.weapon is SpecialWand || character.weapon is SpecialAxe
+            || character.weapon is SpecialIceJet  || character.weapon is SpecialHammer  || character.weapon is SpecialKnife {
           return true
         }
         return false
     }
-    
-    
     // cure others characters from the team
-    
-    func cureOthers(with character: Character, on TeamMember: Character) {
-        
+    func cureOthers(with character: Character, on teamMember: Character) {
         // Giving life points trigger
-        character.giveLife(character: TeamMember)
-        print("\n\n\(TeamMember) \(TeamMember.name) feels a bit better. \(TeamMember.name) life points is now remaining.")
+        character.giveLife(character: teamMember)
+        print("\n\n2 \(teamMember.name) feels a bit better. \(teamMember.name) life points\(teamMember.life) is now remaining.")
 
         // Variables for game statistics
         lifeGive += character.weapon!.hitGiven
         lifeWins += 1
 
     }
-    
-    // Attack ennemy
-    
-     func attack(with character: Character, on opp: Character){
+    // Attack ennemy 🤺
+     func attack(with character: Character, on opp: Character) {
         // Attack on the ennemie trigger
         character.giveLife(character: opp)
 
         // Life points stick to zero after an attack instead of going negative
         if opp.life > 0 {
-          print("\n\(opp) \(opp.name) has been attacked.🤺 \(opp.name) life❤️ is now remaining.")
-        }
-        else {
+          print("\n \(opp.name) has been attacked.🤺 \(opp.name) life❤️ \(opp.life) points is now remaining.")
+        } else {
           opp.life = 0
-          print("\n\(opp) \(opp.name) has 0️⃣ life💔 point remaining.")
+          print("\n \(opp.name) has 0️⃣ life💔 point remaining.")
         }
         // Variables for statistics
         lifeTook += character.weapon!.hitGiven
         damageDone += 1
 
         if opp.life <= 0 {
-          print("\n!!! \(opp.name.uppercased()) !!!")
+          print("\n!!! \(opp.name.uppercased()) is in ⚰️!!!")
           // Variable for game statistics
           isDead += 1
         }
     }
-    
-    
-    
+    // turn to turn
     func playersLoop(playerTurn: Player, opp: Player) {
-      
-        
         print("\n\n--- With what characters 🤺 you want to play ? ---\n")
         // Players see the characters chosen
         playerTurn.presentCharacter()
         // Switch to choose the action fighter
         let character = playerTurn.switchCaracter()
-        print("\n\nYou have chosen \(character.name) with a \(character.weapon!.hitGiven) attack points and this weapon  : \(character.weapon!).")
+        print("\n\nYou have chosen \(character.name) with a \(character.weapon!.hitGiven) attack points and this weapon  : \(character.weapon!.name).")
 
         // When the lucky dice is thrown in game to randomly get a stronger weapon
         if triggerRandomChest(character) == false {
@@ -169,10 +142,8 @@ class Game  {
             attack(with: character, on: opp.switchCaracter())
         }
     }
-    
     // 🔁
-    
-    fileprivate func gameLoop(){
+     func gameLoop() {
         var isPlayerOneTurn = true
 
         while pOne.checkWhoLeft() && pTwo.checkWhoLeft() {
@@ -180,8 +151,7 @@ class Game  {
 
             print("\n\n--- Player 1️⃣ ,👉 YOUR TURN ! ---")
             playersLoop(playerTurn: pOne, opp: pTwo)
-          }
-          else {
+          } else {
             print("\n\n--- Player 2️⃣, 👉 YOUR TURN ! ---")
             playersLoop(playerTurn: pTwo, opp: pOne)
           }
@@ -189,14 +159,12 @@ class Game  {
           isPlayerOneTurn = !isPlayerOneTurn
           turn += 1
         }
-        
     }
-    
+     // func to congrats the winner
     fileprivate func endgame() {
       if pOne.checkWhoLeft() {
         print("\n\n 👏 Congratulations Player 1️⃣ 🥇! You win 🥇🥇🥇! \n\n")
-      }
-      else {
+      } else {
         print("\n\n 👏 Congratulations Player 2️⃣ 🥇! You win🥇🥇🥇! \n\n")
       }
     }
@@ -205,26 +173,20 @@ class Game  {
     fileprivate func printstats() {
       var player1TotalTurn = 0
       var player2TotalTurn = 0
-      
       // Calculate the time each player has played a turn
       if pOne.checkWhoLeft() {
         player1TotalTurn = turn / 2 + 1
-      }
-      else {
+      } else {
         player1TotalTurn = turn / 2
       }
       if pTwo.checkWhoLeft() {
         player2TotalTurn = turn / 21
-      }
-      else {
+      } else {
         player2TotalTurn = turn / 2
       }
 
       print("""
-        
         -- Stats 📈 --
-        
-                
                 - 1️⃣ Turns:   \(player1TotalTurn)
                 - 2️⃣ Turns:   \(player2TotalTurn)
                 - ⚔️Attacks :            \(damageDone)
@@ -233,12 +195,9 @@ class Game  {
                 - Life Back:   \(lifeWins)
                 - 💣🧨🪓Magic Weapon Triggers:   \(magicWeaponTrigger)
                 - 🪦 deadsPeople:    \(isDead)
-        
-        
         """)
     }
 
-    
     // 🎮
     func launch() {
         welcomePrint()
@@ -246,7 +205,5 @@ class Game  {
         gameLoop()
         endgame()
         printstats()
-        
     }
-    
 }

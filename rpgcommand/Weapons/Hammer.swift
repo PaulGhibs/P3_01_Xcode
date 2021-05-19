@@ -9,11 +9,23 @@ import Foundation
 
 
 
-// The weapon to be used by the Warrior
 internal class Hammer: Weapon {
 
   init() {
     super.init(hitGiven: 30)
+    self.name = "Hammer"
+
   }
 }
+
+internal class SpecialHammer: Weapon {
+
+  init() {
+    super.init(hitGiven: 50)
+    self.name = "SpecialHammer"
+
+  }
+}
+
+
 

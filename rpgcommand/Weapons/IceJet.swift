@@ -13,6 +13,18 @@ internal class IceJet: Weapon {
 
   init() {
     super.init(hitGiven: 20)
+    self.name = "IceJet"
+
   }
 }
+
+internal class SpecialIceJet: Weapon {
+
+  init() {
+    super.init(hitGiven: 50)
+    self.name = "SpecialIceJet"
+
+  }
+}
+
 

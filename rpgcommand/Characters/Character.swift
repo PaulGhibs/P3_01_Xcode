@@ -5,28 +5,23 @@
 //  Created by Paul Ghibeaux on 14/05/2021.
 //
 
-
 import Foundation
 
 class Character {
     var name: String
     var life: Int
     var weapon: Weapon?
-    
-    init(charName: String){
+    init(charName: String) {
         life = 0
         self.name = charName
     }
-    
     func hitGiven() -> Int {
         if let charWeapon = weapon {
             return charWeapon.hitGiven
-        }
-        else {
+        } else {
             return 0
         }
     }
-    
     func giveLife(character: Character) {
         if cureOthers() == false {
             character.life -= hitGiven()
@@ -36,7 +31,6 @@ class Character {
             print("You gave \(hitGiven()) to a character of your team.\n")
         }
     }
-    
     func cureOthers() -> Bool {
         _ = Warrior(charName:  "")
         _ = Dwarf(charName: "")
