@@ -1,6 +1,6 @@
 //
 //  Stats.swift
-//  rpgcommand
+//  
 //
 //  Created by Paul Ghibeaux on 17/05/2021.
 //
@@ -13,56 +13,54 @@ class Stats {
     // Tab Players
     let pOne = Player()
     let pTwo = Player()
+    
+    // Stats
     var totalAttackMade = 0
     var attackPointsGiven = 0
     var lifePointsGiven = 0
     var lifePointsActionUsed = 0
     var playerTurnNumber = 0
-    var luckyWeaponTrigger = 0
-    var deadFighters = 0
+    var magicWeaponTrigger = 0
+    var deadChar = 0
     
     func victoryMessage() {
         if pOne.checkWhoLeft() {
-        print("\n\n\n--- CONGRATULATIONS PLAYER ONE! YOU WIN !  ---\n\n")
+        print("\n\n\n--- 👏 Congratulations Player 1️⃣ 🥇! YOU WIN 🥇🥇🥇!  ---\n\n")
       }
       else {
-        print("\n\n\n---  CONGRATULATIONS PLAYER TWO! YOU WIN !  ---\n\n")
+        print("\n\n\n---  👏 Congratulations Player 2️⃣ 🥇! YOU WIN 🥇🥇🥇!  ---\n\n")
       }
     }
 
      func printStats() {
-      var player1TotalTurn = 0
-      var player2TotalTurn = 0
+      var p1TotalTurn = 0
+      var p2TotalTurn = 0
       
       // Calculate the time each player has played a turn
       if pOne.checkWhoLeft() {
-        player1TotalTurn = playerTurnNumber / 2 + 1
+        p1TotalTurn = playerTurnNumber / 2 + 1
       }
       else {
-        player1TotalTurn = playerTurnNumber / 2
+        p1TotalTurn = playerTurnNumber / 2
       }
       if pTwo.checkWhoLeft() {
-        player2TotalTurn = playerTurnNumber / 21
+        p2TotalTurn = playerTurnNumber / 21
       }
       else {
-        player2TotalTurn = playerTurnNumber / 2
+        p2TotalTurn = playerTurnNumber / 2
       }
 
       print("""
+        -- Stats 📈 --
         
-        -- General Game Statistics --
-        
-        - Player One Total Turns:   \(player1TotalTurn)
-        - Player Two Total Turns:   \(player2TotalTurn)
-        - Total Attacks:            \(totalAttackMade)
-        - Total Attack Points:      \(attackPointsGiven)
-        - Total Wizard' s Actions:  \(lifePointsActionUsed)
-        - Total Life Points Back:   \(lifePointsGiven)
-        - Lucky Weapon Triggered:   \(luckyWeaponTrigger)
-        - Fighters Dead in Game:    \(deadFighters)
-        
-        
-        
+        - 1️⃣ Turns:   \(p1TotalTurn)
+        - 2️⃣ Turns:   \(p2TotalTurn)
+        - ⚔️Attacks :            \(totalAttackMade)
+        - Life Given → :      \(attackPointsGiven)
+        - Sorcerers Heals points used:  \(lifePointsActionUsed)
+        - Life Back:   \(lifePointsGiven)
+        - 💣🧨🪓Magic Weapon Triggers:   \(magicWeaponTrigger)
+        - 🪦 deadsPeople:    \(deadChar)
         """)
     }
 }

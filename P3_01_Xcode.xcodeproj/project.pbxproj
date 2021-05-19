@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		6116757D2652AD4E00FAFBB2 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6116757C2652AD4E00FAFBB2 /* Stats.swift */; };
 		6116757F2652BF3600FAFBB2 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6116757E2652BF3600FAFBB2 /* Knight.swift */; };
-		611675812652CF9300FAFBB2 /* Sand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611675802652CF9300FAFBB2 /* Sand.swift */; };
+		611675812652CF9300FAFBB2 /* Wand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611675802652CF9300FAFBB2 /* Wand.swift */; };
+		611675832652D85E00FAFBB2 /* Fairy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611675822652D85E00FAFBB2 /* Fairy.swift */; };
+		611675852652D86500FAFBB2 /* Evil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611675842652D86500FAFBB2 /* Evil.swift */; };
+		618A5B692653EF4D00DDBFA4 /* Knife.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618A5B682653EF4D00DDBFA4 /* Knife.swift */; };
+		618A5B6B2653FFB400DDBFA4 /* IceJet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618A5B6A2653FFB400DDBFA4 /* IceJet.swift */; };
 		6195F91B2652769400D348F6 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6195F91A2652769400D348F6 /* Game.swift */; };
 		6195F91D265276F300D348F6 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6195F91C265276F300D348F6 /* Player.swift */; };
 		61B9002F264E7AF300F05A51 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B9002E264E7AF300F05A51 /* main.swift */; };
@@ -39,7 +43,11 @@
 /* Begin PBXFileReference section */
 		6116757C2652AD4E00FAFBB2 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		6116757E2652BF3600FAFBB2 /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
-		611675802652CF9300FAFBB2 /* Sand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sand.swift; sourceTree = "<group>"; };
+		611675802652CF9300FAFBB2 /* Wand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wand.swift; sourceTree = "<group>"; };
+		611675822652D85E00FAFBB2 /* Fairy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fairy.swift; sourceTree = "<group>"; };
+		611675842652D86500FAFBB2 /* Evil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evil.swift; sourceTree = "<group>"; };
+		618A5B682653EF4D00DDBFA4 /* Knife.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knife.swift; sourceTree = "<group>"; };
+		618A5B6A2653FFB400DDBFA4 /* IceJet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceJet.swift; sourceTree = "<group>"; };
 		6195F91A2652769400D348F6 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		6195F91C265276F300D348F6 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		61B9002B264E7AF300F05A51 /* rpgcommand */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = rpgcommand; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +108,8 @@
 			children = (
 				61B90037264E7C1300F05A51 /* Character.swift */,
 				61B9003C264E7C9800F05A51 /* Warrior.swift */,
+				611675822652D85E00FAFBB2 /* Fairy.swift */,
+				611675842652D86500FAFBB2 /* Evil.swift */,
 				6116757E2652BF3600FAFBB2 /* Knight.swift */,
 				61B90049264E8CD400F05A51 /* Sorcerer.swift */,
 				61B9004B264E8CE800F05A51 /* Dwarf.swift */,
@@ -112,8 +122,10 @@
 			children = (
 				61B90039264E7C7B00F05A51 /* Weapon.swift */,
 				61B9003F264E7CBC00F05A51 /* Sword.swift */,
+				618A5B682653EF4D00DDBFA4 /* Knife.swift */,
 				61B90041264E7CC500F05A51 /* Axe.swift */,
-				611675802652CF9300FAFBB2 /* Sand.swift */,
+				611675802652CF9300FAFBB2 /* Wand.swift */,
+				618A5B6A2653FFB400DDBFA4 /* IceJet.swift */,
 				61B90051264E8DBD00F05A51 /* Hammer.swift */,
 				61B9004F264E8D4000F05A51 /* RandomWeapon.swift */,
 			);
@@ -178,16 +190,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				61B90040264E7CBC00F05A51 /* Sword.swift in Sources */,
+				611675832652D85E00FAFBB2 /* Fairy.swift in Sources */,
 				6116757D2652AD4E00FAFBB2 /* Stats.swift in Sources */,
 				61B9004C264E8CE800F05A51 /* Dwarf.swift in Sources */,
 				61B9004A264E8CD400F05A51 /* Sorcerer.swift in Sources */,
 				61B9003D264E7C9800F05A51 /* Warrior.swift in Sources */,
+				618A5B6B2653FFB400DDBFA4 /* IceJet.swift in Sources */,
 				6195F91D265276F300D348F6 /* Player.swift in Sources */,
 				6116757F2652BF3600FAFBB2 /* Knight.swift in Sources */,
 				61B90042264E7CC500F05A51 /* Axe.swift in Sources */,
 				61B9003A264E7C7B00F05A51 /* Weapon.swift in Sources */,
 				6195F91B2652769400D348F6 /* Game.swift in Sources */,
-				611675812652CF9300FAFBB2 /* Sand.swift in Sources */,
+				611675852652D86500FAFBB2 /* Evil.swift in Sources */,
+				611675812652CF9300FAFBB2 /* Wand.swift in Sources */,
+				618A5B692653EF4D00DDBFA4 /* Knife.swift in Sources */,
 				61B9002F264E7AF300F05A51 /* main.swift in Sources */,
 				61B90052264E8DBE00F05A51 /* Hammer.swift in Sources */,
 				61B90050264E8D4000F05A51 /* RandomWeapon.swift in Sources */,

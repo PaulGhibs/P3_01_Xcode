@@ -1,14 +1,12 @@
 //
 //  Character.swift
-//  rpgcommand
+//  
 //
 //  Created by Paul Ghibeaux on 14/05/2021.
 //
 
 
 import Foundation
-
-
 
 internal class Character {
     var name: String
@@ -28,8 +26,6 @@ internal class Character {
             return 0
         }
     }
-    
-    
     
     func giveLife(character: Character) {
         if cureOthers() == false {
