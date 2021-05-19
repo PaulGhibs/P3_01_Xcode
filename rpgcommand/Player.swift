@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Cocoa
+
 
 
 class Player {
@@ -21,7 +23,8 @@ class Player {
         
         // Loop for players to select and name their fighters
         while charactList.count < 3 {
-          print("\nType a number to choose a character:")
+            print("\nType a number to choose a character:")
+
           
           if let userChoice = readLine() {
             print("\nName your character:")
@@ -36,45 +39,46 @@ class Player {
                 
                 switch userChoice {
                 case "1":
-                    charactList.append(Warrior(charName: "\(nameChoice.capitalized)"))
+                    charactList.append(Warrior(charName: "\(nameChoice.capitalized) 🥷"))
                 case "2":
-                  charactList.append(Sorcerer(charName: "\(nameChoice.capitalized)"))
+                  charactList.append(Sorcerer(charName: "\(nameChoice.capitalized) 🧙‍♂️"))
                 case "3":
-                    charactList.append(Knight(charName: "\(nameChoice.capitalized)"))
+                    charactList.append(Knight(charName: "\(nameChoice.capitalized) 🏇"))
                 case "4":
-                  charactList.append(Dwarf(charName:  "\(nameChoice.capitalized)"))
+                  charactList.append(Dwarf(charName:  "\(nameChoice.capitalized) 👹"))
                 case "5":
-                  charactList.append(Fairy(charName:  "\(nameChoice.capitalized)"))
+                  charactList.append(Fairy(charName:  "\(nameChoice.capitalized) 🧚‍♀️"))
                 case "6":
-                  charactList.append(Evil(charName:  "\(nameChoice.capitalized)"))
+                  charactList.append(Evil(charName:  "\(nameChoice.capitalized) 😈"))
+               
+                   
+                    
                 default:
-                  print("\n!!⛔️  You have not chosen three characters to enter the ring ⛔️ !! \n\n!! Enter a number(1️⃣...6️⃣)associated to a character... !!\n")
+                  print("\n!!⛔️ You have not chosen three characters to enter the ring ⛔️ !!! Enter a number(1️⃣...6️⃣) associated to a character... !!\n")
                 }
               }
             }
           }
+            
         }
         playerChoiceConfirm()
+        
+        
         return listCharactersName
     }
+    
+   
+
     
     func playerChoiceConfirm(){
         print("\n\nYour chosen characters 🤺 are: \n")
         for fighter in charactList {
           print("\(fighter.name)")
         }
-        print("")
     }
     
     func presentCharacter()  {
-        print("""
-          
-          1:\(charactList[0])  \(charactList[0].name),  \(charactList[0].life) life points,  \(charactList[0].hitGiven()) attacks.
-          2:\(charactList[1])  \(charactList[1].name),  \(charactList[1].life) life points,  \(charactList[1].hitGiven()) attacks.
-          3:\(charactList[2])  \(charactList[2].name),  \(charactList[2].life) life points.  \(charactList[2].hitGiven()) attacks.
-          
-
-          """)
+        print("\n\n1: \(charactList[0].name), \(charactList[0].life) life points, and can do \(charactList[0].hitGiven()) attacks.\n\n2:  \(charactList[1].name), \(charactList[1].life) life points, and can do \(charactList[1].hitGiven()) attacks. \n\n3: \(charactList[2].name), \(charactList[2].life) life points, and can do \(charactList[2].hitGiven()) attacks.")
     }
     
     
@@ -102,7 +106,7 @@ class Player {
             }
             
             if let player = playerChosen, player.life <= 0 {
-              print("\n\n🪦 Dead people cannot be used anymore 🪦\n\nChoose one alive to continue...the game")
+              print("\n\n🪦 Dead people cannot be used anymore 🪦\n\n Choose one still alive to continue...the game")
               playerChosen = nil
             }
           }

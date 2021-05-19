@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal class Character {
+class Character {
     var name: String
     var life: Int
     var weapon: Weapon?
@@ -30,10 +30,10 @@ internal class Character {
     func giveLife(character: Character) {
         if cureOthers() == false {
             character.life -= hitGiven()
-            print("You took \(hitGiven())of life to your ennemy.\n")
+            print("You took \(hitGiven()) points of life to your ennemy.\n")
         } else if cureOthers() == true {
             character.life += hitGiven()
-            print("You gave \(hitGiven())to a character of your team.\n")
+            print("You gave \(hitGiven()) to a character of your team.\n")
         }
     }
     
