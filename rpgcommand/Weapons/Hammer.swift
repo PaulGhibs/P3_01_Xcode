@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+// The weapon used by 🏇
 
 internal class Hammer: Weapon {
 
@@ -26,6 +26,3 @@ internal class SpecialHammer: Weapon {
 
   }
 }
-
-
-

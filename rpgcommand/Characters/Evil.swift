@@ -7,9 +7,9 @@
 
 import Foundation
 
+// Fairy 😈 character
 
 internal class Evil: Character {
-    
     override init(charName fighterName: String) {
         super.init(charName: fighterName)
       life = 60

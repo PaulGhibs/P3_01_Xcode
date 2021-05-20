@@ -7,7 +7,7 @@
 
 import Foundation
 
-// The weapon to be used by the Warrior
+// The weapon used by 🧚‍♀️
 internal class Knife: Weapon {
 
   init() {

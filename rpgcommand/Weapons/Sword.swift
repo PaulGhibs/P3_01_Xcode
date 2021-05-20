@@ -7,8 +7,7 @@
 
 import Foundation
 
-
-// The weapon to be used by the Warrior
+// The weapon used by 🥷
 internal class Sword: Weapon {
 
   init() {
@@ -16,7 +15,6 @@ internal class Sword: Weapon {
     self.name = "Sword"
   }
 }
-
 
 internal class SpecialSword: Weapon {
 
@@ -26,6 +24,3 @@ internal class SpecialSword: Weapon {
 
   }
 }
-
-
-

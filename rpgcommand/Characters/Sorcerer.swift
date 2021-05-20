@@ -7,6 +7,9 @@
 
 import Foundation
 
+// Sorcerer 🧙‍♂️ character
+
+
 internal class Sorcerer: Character {
     override init(charName fighterName: String) {
         super.init(charName: fighterName)

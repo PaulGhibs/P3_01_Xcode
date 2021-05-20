@@ -7,9 +7,9 @@
 
 import Foundation
 
+// Warrior 🥷 character
 
 internal class Warrior: Character {
-    
     override init(charName fighterName: String) {
         super.init(charName: fighterName)
       life = 100

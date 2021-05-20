@@ -5,10 +5,10 @@
 //  Created by Paul Ghibeaux on 14/05/2021.
 //
 
-
 import Foundation
 
-// This is where weapons capabilities are
+// Weapon capabilities name and hit
+
 internal class Weapon {
 
   var hitGiven: Int
@@ -17,6 +17,5 @@ internal class Weapon {
   init(hitGiven: Int) {
     self.hitGiven = hitGiven
     self.name = ""
-    
   }
 }
