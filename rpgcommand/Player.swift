@@ -28,27 +28,7 @@ class Player {
               if listCharactersName.contains(nameChoice) {
                 print("\n\n ⛔️ Name your character uniquely ⛔️!")
               } else {
-                
-                
                 listCharactersName.append(nameChoice)
-                
-                
-                
-                for _ in charactList{
-                    if userChoice == "1" {
-                        charactList.append(Warrior(charName: "\(nameChoice.capitalized) 🥷"))
-                        charactList.append(Sorcerer(charName: "\(nameChoice.capitalized) 🧙‍♂️"))
-                        charactList.append(Knight(charName: "\(nameChoice.capitalized) 🏇"))
-                        charactList.append(Dwarf(charName: "\(nameChoice.capitalized) 👹"))
-                        charactList.append(Fairy(charName:  "\(nameChoice.capitalized) 🧚‍♀️"))
-                        charactList.append(Evil(charName:  "\(nameChoice.capitalized) 😈"))
-                       
-                    } else if userChoice == "2" {
-                        print("\n!!⛔️  You have not chosen three characters to enter the ring ⛔️ !! \n\n!! Enter a number(1️⃣...6️⃣)associated to a character... !!\n")
-                  
-                }
-                
-                
                 // Number tipped for a choice
                 switch userChoice {
                 case "1": charactList.append(Warrior(charName: "\(nameChoice.capitalized) 🥷"))
@@ -86,24 +66,23 @@ class Player {
     func switchCaracter() -> Character {
         var playerChosen: Character?
         while playerChosen == nil {
-          if let userChoice = readLine() {
-            
-            
-            
-            
-            
-            switch userChoice {
-            case "1": playerChosen = charactList[0]
-            case "2": playerChosen = charactList[1]
-            case "3": playerChosen = charactList[2]
-            default:
-              print("\n!!! Enter a number associated to a character 🤺 to continue !!!\n")
+            if let userChoice = readLine() {
+                for _ in charactList {
+                    if userChoice == "1" {
+                        playerChosen = charactList[0]
+                    } else if userChoice == "2" {
+                        playerChosen = charactList[1]
+                    } else if userChoice == "3" {
+                        playerChosen = charactList[2]
+                    } else {
+                        print("\n!!! Enter a number associated to a character 🤺 to continue !!!\n")
+                    }
+                }
+                if let player = playerChosen, player.life <= 0 {
+                    print("\n\n🪦 Dead people cannot be used anymore 🪦\n\nChoose one alive to continue...the game")
+                    playerChosen = nil
+                }
             }
-            if let player = playerChosen, player.life <= 0 {
-              print("\n\n🪦 Dead people cannot be used anymore 🪦\n\nChoose one alive to continue...the game")
-              playerChosen = nil
-            }
-          }
         }
         return playerChosen!
       }

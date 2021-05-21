@@ -11,7 +11,6 @@ class Game {
     // Tab Player 1️⃣ & 2️⃣ / Instances for stats
     let pOne = Player()
     let pTwo = Player()
-    // vars used for stats at the end of the game
     // damage
     var damageDone = 0
     // life
@@ -22,6 +21,7 @@ class Game {
     var magicWeaponTrigger = 0
     // players turn
     var turnPlayers = 0
+    
     // Dead characters
     var numberOfCharactersDead = 0
     // Welcoming
@@ -58,9 +58,7 @@ class Game {
     // Random Weapon Magic
      func randomChest(for character: Character) {
         let randomChestOnGame = Int(arc4random_uniform(6))
-
         if randomChestOnGame == 3 {
-
           if character is Warrior {
             character.weapon = SpecialSword()
           } else if character is Sorcerer {
