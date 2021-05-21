@@ -8,17 +8,22 @@
 import Foundation
 
 class Game {
-    // Tab Players for Player 1️⃣ & 2️⃣ / Instances for stats
+    // Tab Player 1️⃣ & 2️⃣ / Instances for stats
     let pOne = Player()
     let pTwo = Player()
-    // Stats, lifepoints, and damage
+    // vars used for stats at the end of the game
+    // damage
     var damageDone = 0
+    // life
     var lifeTook = 0
     var lifeWins = 0
     var lifeGive = 0
+    // Magic weapon
     var magicWeaponTrigger = 0
-    var turn = 0
-    var isDead = 0
+    // players turn
+    var turnPlayers = 0
+    // Dead characters
+    var numberOfCharactersDead = 0
     // Welcoming
     func welcomePrint() {
     print("👋 Welcome On RPGCommand 🎲 ⚔️ 🎲")
@@ -30,6 +35,7 @@ class Game {
     }
     // Present Character to Player 1️⃣
     func characterPresentation() {
+        
         print("""
           1. Warrior 🥷 : \(Warrior(charName: "  🥷").life) life and a 🗡\(Sword().hitGiven)  hit damages.
           2. Sorcerer 🧙‍♂️ : \(Sorcerer(charName: "  🧙‍♂️").life) life and a 🪄\(Wand().hitGiven) life keeps for an allie.
@@ -112,7 +118,7 @@ class Game {
         if opp.life <= 0 {
           print("\n!!! \(opp.name.uppercased()) is in ⚰️!!!")
           // Variable for game statistics
-          isDead += 1
+          numberOfCharactersDead += 1
         }
     }
     // turn to turn 🔁
@@ -157,7 +163,7 @@ class Game {
           }
 
           isPlayerOneTurn = !isPlayerOneTurn
-          turn += 1
+          turnPlayers += 1
         }
     }
      // func to congrats the winner 🥇
@@ -175,14 +181,14 @@ class Game {
       var player2TotalTurn = 0
       // Calculate the time each player has played a turn
       if pOne.checkWhoLeft() {
-        player1TotalTurn = turn / 2 + 1
+        player1TotalTurn = turnPlayers / 2 + 1
       } else {
-        player1TotalTurn = turn / 2
+        player1TotalTurn = turnPlayers / 2
       }
       if pTwo.checkWhoLeft() {
-        player2TotalTurn = turn / 21
+        player2TotalTurn = turnPlayers / 21
       } else {
-        player2TotalTurn = turn / 2
+        player2TotalTurn = turnPlayers / 2
       }
 
       print("""
@@ -194,7 +200,7 @@ class Game {
                 - 🧙‍♂️Sorcerers Heals points used:  \(lifeTook)
                 - ❤️ Life Back:   \(lifeWins)
                 - 💣🧨🪓Magic Weapon Triggers:   \(magicWeaponTrigger)
-                - 🪦 deadsPeople:    \(isDead)
+                - 🪦 deadsPeople:    \(numberOfCharactersDead)
         """)
     }
 

@@ -11,7 +11,7 @@ import Foundation
 internal class Sword: Weapon {
 
   init() {
-    super.init(hitGiven: 10)
+    super.init(hitGiven: 20)
     self.name = "Sword"
   }
 }
@@ -19,7 +19,7 @@ internal class Sword: Weapon {
 internal class SpecialSword: Weapon {
 
   init() {
-    super.init(hitGiven: 20)
+    super.init(hitGiven: 30)
     self.name = "SpecialSword"
 
   }

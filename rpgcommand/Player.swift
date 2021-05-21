@@ -8,6 +8,7 @@
 import Foundation
 
 class Player {
+    
     var charactList = [Character]()
 
     // CreateTeam() ->  sets up the team of 3 characters 👨‍👦‍👦
@@ -27,21 +28,35 @@ class Player {
               if listCharactersName.contains(nameChoice) {
                 print("\n\n ⛔️ Name your character uniquely ⛔️!")
               } else {
+                
+                
                 listCharactersName.append(nameChoice)
+                
+                
+                
+                for _ in charactList{
+                    if userChoice == "1" {
+                        charactList.append(Warrior(charName: "\(nameChoice.capitalized) 🥷"))
+                        charactList.append(Sorcerer(charName: "\(nameChoice.capitalized) 🧙‍♂️"))
+                        charactList.append(Knight(charName: "\(nameChoice.capitalized) 🏇"))
+                        charactList.append(Dwarf(charName: "\(nameChoice.capitalized) 👹"))
+                        charactList.append(Fairy(charName:  "\(nameChoice.capitalized) 🧚‍♀️"))
+                        charactList.append(Evil(charName:  "\(nameChoice.capitalized) 😈"))
+                       
+                    } else if userChoice == "2" {
+                        print("\n!!⛔️  You have not chosen three characters to enter the ring ⛔️ !! \n\n!! Enter a number(1️⃣...6️⃣)associated to a character... !!\n")
+                  
+                }
+                
+                
                 // Number tipped for a choice
                 switch userChoice {
-                case "1":
-                    charactList.append(Warrior(charName: "\(nameChoice.capitalized) 🥷"))
-                case "2":
-                  charactList.append(Sorcerer(charName: "\(nameChoice.capitalized) 🧙‍♂️"))
-                case "3":
-                    charactList.append(Knight(charName: "\(nameChoice.capitalized) 🏇"))
-                case "4":
-                  charactList.append(Dwarf(charName: "\(nameChoice.capitalized) 👹"))
-                case "5":
-                  charactList.append(Fairy(charName:  "\(nameChoice.capitalized) 🧚‍♀️"))
-                case "6":
-                  charactList.append(Evil(charName:  "\(nameChoice.capitalized) 😈"))
+                case "1": charactList.append(Warrior(charName: "\(nameChoice.capitalized) 🥷"))
+                case "2": charactList.append(Sorcerer(charName: "\(nameChoice.capitalized) 🧙‍♂️"))
+                case "3": charactList.append(Knight(charName: "\(nameChoice.capitalized) 🏇"))
+                case "4": charactList.append(Dwarf(charName: "\(nameChoice.capitalized) 👹"))
+                case "5": charactList.append(Fairy(charName:  "\(nameChoice.capitalized) 🧚‍♀️"))
+                case "6": charactList.append(Evil(charName:  "\(nameChoice.capitalized) 😈"))
                 default:
                   print("\n!!⛔️  You have not chosen three characters to enter the ring ⛔️ !! \n\n!! Enter a number(1️⃣...6️⃣)associated to a character... !!\n")
                 }
@@ -62,12 +77,9 @@ class Player {
     }
     //present for each turn 🔁 which one are still alive
     func presentCharacter() {
-        print("""
-          1:  \(charactList[0].name),  \(charactList[0].life) life points,  \(charactList[0].hitGiven()) attacks strenghts.
-          2:  \(charactList[1].name),  \(charactList[1].life) life points,  \(charactList[1].hitGiven()) attacks strenghts.
-          3:  \(charactList[2].name),  \(charactList[2].life) life points.  \(charactList[2].hitGiven()) attacks strenghts.
-
-          """)
+        for characters in charactList {
+            print("\(characters.name),  \(characters.life) life points,  \(characters.hitGiven()) attacks strenghts.")
+        }
     }
     
     // switch characters for attacking  🤺 opponent
@@ -75,13 +87,15 @@ class Player {
         var playerChosen: Character?
         while playerChosen == nil {
           if let userChoice = readLine() {
+            
+            
+            
+            
+            
             switch userChoice {
-            case "1":
-              playerChosen = charactList[0]
-            case "2":
-              playerChosen = charactList[1]
-            case "3":
-              playerChosen = charactList[2]
+            case "1": playerChosen = charactList[0]
+            case "2": playerChosen = charactList[1]
+            case "3": playerChosen = charactList[2]
             default:
               print("\n!!! Enter a number associated to a character 🤺 to continue !!!\n")
             }
