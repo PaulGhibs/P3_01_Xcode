@@ -26,7 +26,7 @@ class Game {
     var numberOfCharactersDead = 0
     // Welcoming
     func welcomePrint() {
-    print("👋 Welcome On RPGCommand 🎲 ⚔️ 🎲")
+        print("👋 Welcome On RPGCommand 🎲 ⚔️ 🎲")
         print("\n\nTo begin you will be prompt to select 3️⃣ characters in the list by typing a number.")
         print("\n\nWhen you'll choose one we will ask you a name for the character.")
         print("\n\n⛔️ If you attend to use the same name for each it's not possible ⛔️")
@@ -34,16 +34,11 @@ class Game {
 
     }
     // Present Character to Player 1️⃣
-    func characterPresentation() {
-        
-        print("""
-          1. Warrior 🥷 : \(Warrior(charName: "  🥷").life) life and a 🗡\(Sword().hitGiven)  hit damages.
-          2. Sorcerer 🧙‍♂️ : \(Sorcerer(charName: "  🧙‍♂️").life) life and a 🪄\(Wand().hitGiven) life keeps for an allie.
-          3. Knight 🏇: \(Knight(charName: "  🏇").life) life and a 🔨\(Hammer().hitGiven) hits.
-          4. Dwarf 👹: \(Dwarf(charName: "  👹").life) life and a 🪓\(Axe().hitGiven) hits.
-          5. Fairy 🧚‍♀️: \(Fairy(charName: "  🧚‍♀️").life) life and a 🔪\(Knife().hitGiven) life keeps for an allie.
-          6. Demon 😈: \(Evil(charName: "  😈").life) life and a ❄️\(IceJet().hitGiven) hits.
-          """)
+     func characterPresentation() {
+       let characters = [Warrior(charName: "Warrior 🥷"), Sorcerer(charName: "Sorcerer 🧙‍♂️"), Knight(charName: "Knight  🏇"), Dwarf(charName: "Dwarf 👹"), Fairy(charName: "Fairy 🧚‍♀️")]
+        for character in characters {
+            print("\(character.name) a life of \(character.life) and a the weapon \(character.weapon)) and \( character.weapon?.hitGiven)) of hit damages")
+        }
     }
     // Choose character player : 1️⃣ & 2️⃣
     func playerTeamsSetUp() {
@@ -58,6 +53,8 @@ class Game {
     // Random Weapon Magic
      func randomChest(for character: Character) {
         let randomChestOnGame = Int(arc4random_uniform(6))
+        
+        // guard
         if randomChestOnGame == 3 {
           if character is Warrior {
             character.weapon = SpecialSword()
@@ -125,7 +122,7 @@ class Game {
         // Players see the characters chosen
         playerTurn.presentCharacter()
         // Switch to choose the character to attack  🤺 or heal
-        let character = playerTurn.switchCaracter()
+        let character = playerTurn.changeCaracter()
         print("\n\nYou have chosen \(character.name) with a \(character.weapon!.hitGiven) attack points and this weapon  : \(String(describing: character.weapon!.name)).")
 
         // When the lucky chest is thrown in game to randomly get a stronger weapon
@@ -137,20 +134,20 @@ class Game {
         if character.cureOthers() {
           print("\n\n--- Which one of your characters you want to give life ❤️ points back to? ---")
           playerTurn.presentCharacter()
-            cureOthers(with: character, on: playerTurn.switchCaracter())
+            cureOthers(with: character, on: playerTurn.changeCaracter())
         }
           // If not the sorcerer, the player chooses a character to 🤺
         else {
           print("\n\n--- Which one of your ennemies you want to attack? 🏹 ---")
           opp.presentCharacter()
-            attack(with: character, on: opp.switchCaracter())
+            attack(with: character, on: opp.changeCaracter())
         }
     }
     // 🔁 turn loop until characters are dead 🪦
      func gameLoop() {
         var isPlayerOneTurn = true
 
-        while pOne.checkWhoLeft() && pTwo.checkWhoLeft() {
+        while pOne.checkAlives() && pTwo.checkAlives() {
           if isPlayerOneTurn {
 
             print("\n\n--- Player 1️⃣ ,👉 Your turn ! ---")
@@ -166,7 +163,7 @@ class Game {
     }
      // func to congrats the winner 🥇
     fileprivate func endgame() {
-      if pOne.checkWhoLeft() {
+      if pOne.checkAlives() {
         print("\n\n 👏 Congratulations Player 1️⃣ 🥇! You win 🥇🥇🥇! \n\n")
       } else {
         print("\n\n 👏 Congratulations Player 2️⃣ 🥇! You win🥇🥇🥇! \n\n")
@@ -178,12 +175,12 @@ class Game {
       var player1TotalTurn = 0
       var player2TotalTurn = 0
       // Calculate the time each player has played a turn
-      if pOne.checkWhoLeft() {
+      if pOne.checkAlives() {
         player1TotalTurn = turnPlayers / 2 + 1
       } else {
         player1TotalTurn = turnPlayers / 2
       }
-      if pTwo.checkWhoLeft() {
+      if pTwo.checkAlives() {
         player2TotalTurn = turnPlayers / 21
       } else {
         player2TotalTurn = turnPlayers / 2
