@@ -3,12 +3,12 @@
 //  
 //
 //  Created by Paul Ghibeaux on 17/05/2021.
-//  swiftlint:disable all
+// swiftlint:disable all
+
 
 import Foundation
 
 class Player {
-    
     var charactList = [Character]()
 
     // CreateTeam() ->  sets up the team of 3 characters 👨‍👦‍👦
@@ -21,43 +21,37 @@ class Player {
             // ask an input for select caracters inside a loop.
             print("\nType a number to choose a character:")
             if let userChoice = readLine() {
-                guard userChoice.contains("") else {
-                    print("\n\n ⛔️ Number only ⛔️!")
-                    continue
+                guard let userNumber = Int(userChoice), userNumber > 0 else {
+                print("⛔️ Number Only ⛔️!")
+                continue
                 }
                 print("\nName your character:")
                 // ask an input for naming caracters
                 if let nameChoice = readLine() {
-                    if nameChoice.contains("\(userChoice)") {
-                        print("\n\n ⛔️ Text only ⛔️!")
+                    if let userNumber = Int(nameChoice), userNumber > 0 {
+                        print("⛔️ Text Only ⛔️!")
+                        continue
                     }
                     if listCharactersName.contains(nameChoice) {
-                        print("\n\n ⛔️ Name your character uniquely ⛔️!")
+                        print("⛔️ Name your character uniquely ⛔️!")
                     } else {
                         listCharactersName.append(nameChoice)
-                        // Number tipped for a choice
-                        guard let userChoiceNumber = Int(userChoice),
-                              userChoiceNumber > 0 && userChoiceNumber <= charactList.count else {
-                            charactList.append(Character(charName: "\(nameChoice.capitalized)"))
-                            continue
-                        }
+                        charactList.append(Character(charName: "\(nameChoice.capitalized)"))
                     }
                 }
             }
-            
         }
         playerChoice()
         return listCharactersName
     }
-    //show teams characters👨‍👦‍👦
+    // show teams characters👨‍👦‍👦
     func playerChoice() {
         print("\n\nYour chosen characters 🤺 are: \n")
         for fighter in charactList {
-          print("\(fighter.name)")
+            print("\(fighter.name)")
         }
-        print("")
     }
-    //present for each turn 🔁 which one are still alive
+    // present for each turn 🔁 which one are still alive
     func presentCharacter() {
         for characters in charactList {
             print("\(characters.name),  \(characters.life) life points,  \(characters.hitGiven()) attacks strenghts.")
@@ -78,7 +72,6 @@ class Player {
         }
         return playerChosen!
       }
-    
     // check who is still alive in the team 👨‍👦‍👦
     func checkAlives() -> Bool {
         for characters in charactList {

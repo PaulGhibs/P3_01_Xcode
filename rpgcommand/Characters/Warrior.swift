@@ -13,7 +13,7 @@ internal class Warrior: Character {
     override init(charName fighterName: String) {
         super.init(charName: fighterName)
       life = 100
-
+        self.emoji = "🥷"
       self.weapon = Sword()
     }
 }

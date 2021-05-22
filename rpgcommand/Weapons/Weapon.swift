@@ -13,6 +13,18 @@ internal class Weapon {
 
   var hitGiven: Int
   var name: String?
+  var emoji = ""
+  init(hitGiven: Int) {
+    self.hitGiven = hitGiven
+    self.name = ""
+    self.emoji = ""
+  }
+}
+
+internal class SpecialWeapon {
+
+  var hitGiven: Int
+  var name: String?
 
   init(hitGiven: Int) {
     self.hitGiven = hitGiven

@@ -13,11 +13,11 @@ internal class IceJet: Weapon {
   init() {
     super.init(hitGiven: 20)
     self.name = "IceJet"
-
+    self.emoji = "❄️"
   }
 }
 
-internal class SpecialIceJet: Weapon {
+internal class SpecialIceJet: SpecialWeapon {
 
   init() {
     super.init(hitGiven: 50)

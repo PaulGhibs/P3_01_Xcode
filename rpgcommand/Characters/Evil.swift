@@ -7,13 +7,13 @@
 
 import Foundation
 
-// Fairy 😈 character
+// Evil 😈 character
 
 internal class Evil: Character {
     override init(charName fighterName: String) {
         super.init(charName: fighterName)
       life = 60
-
+        self.emoji = "😈"
       self.weapon = Axe()
     }
 }

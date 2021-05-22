@@ -14,11 +14,11 @@ internal class Hammer: Weapon {
   init() {
     super.init(hitGiven: 30)
     self.name = "Hammer"
-
+    self.emoji = "🔨"
   }
 }
 
-internal class SpecialHammer: Weapon {
+internal class SpecialHammer: SpecialWeapon {
 
   init() {
     super.init(hitGiven: 50)

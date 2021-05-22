@@ -13,7 +13,7 @@ internal class Dwarf: Character {
     override init(charName fighterName: String) {
         super.init(charName: fighterName)
       life = 40
-
-      self.weapon = Knife()
+        self.emoji = "👹"
+       self.weapon = Knife()
     }
 }

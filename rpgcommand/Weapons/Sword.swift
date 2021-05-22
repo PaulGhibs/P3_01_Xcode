@@ -13,10 +13,11 @@ internal class Sword: Weapon {
   init() {
     super.init(hitGiven: 20)
     self.name = "Sword"
+    self.emoji = "🗡"
   }
 }
 
-internal class SpecialSword: Weapon {
+internal class SpecialSword: SpecialWeapon {
 
   init() {
     super.init(hitGiven: 30)

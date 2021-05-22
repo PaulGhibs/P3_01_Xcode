@@ -5,6 +5,8 @@
 //  Created by Paul Ghibeaux on 17/05/2021.
 // swiftlint:disable all
 
+
+
 import Foundation
 
 class Game {
@@ -21,7 +23,6 @@ class Game {
     var magicWeaponTrigger = 0
     // players turn
     var turnPlayers = 0
-    
     // Dead characters
     var numberOfCharactersDead = 0
     // Welcoming
@@ -31,13 +32,12 @@ class Game {
         print("\n\nWhen you'll choose one we will ask you a name for the character.")
         print("\n\n⛔️ If you attend to use the same name for each it's not possible ⛔️")
         print("\n\n If you choose a sorcerer 🧙‍♂️  or Fairy 🧚‍♀️ you can heal others people of your team at some point ")
-
     }
     // Present Character to Player 1️⃣
      func characterPresentation() {
-       let characters = [Warrior(charName: "Warrior 🥷"), Sorcerer(charName: "Sorcerer 🧙‍♂️"), Knight(charName: "Knight  🏇"), Dwarf(charName: "Dwarf 👹"), Fairy(charName: "Fairy 🧚‍♀️")]
+        let characters = [Warrior(charName: "Warrior"), Sorcerer(charName: "Sorcerer "), Knight(charName: "Knight "), Dwarf(charName: "Dwarf"), Fairy(charName: "Fairy")]
         for character in characters {
-            print("\(character.name) a life of \(character.life) and a the weapon \(character.weapon)) and \( character.weapon?.hitGiven)) of hit damages")
+            print("\(character.name) \(character.emoji) a life of \(character.life) and a the weapon \(character.weapon?.name ?? "") \( character.weapon?.emoji ?? "") \(character.weapon?.hitGiven ?? 0) and of hit damages")
         }
     }
     // Choose character player : 1️⃣ & 2️⃣
@@ -53,32 +53,19 @@ class Game {
     // Random Weapon Magic
      func randomChest(for character: Character) {
         let randomChestOnGame = Int(arc4random_uniform(6))
-        
-        // guard
+        let specialWeaponList = [SpecialWeapon]()
         if randomChestOnGame == 3 {
-          if character is Warrior {
-            character.weapon = SpecialSword()
-          } else if character is Sorcerer {
-            character.weapon = SpecialWand()
-          } else if character is Knight {
-            character.weapon = SpecialHammer()
-          } else if character is Fairy {
-            character.weapon = SpecialKnife()
-          } else if character is Evil {
-            character.weapon = SpecialIceJet()
-          } else {
-            character.weapon = SpecialSword()
-          }
-         print("\n\n\n 🍀 🌀 A special chest Appeared 🍀 🌀  \n\nYour weapon has now a \(character.weapon!.hitGiven) attack points ⚔️")
-
+        for _ in specialWeaponList {
+                character.specialWeapon = SpecialWeapon(hitGiven: 0)
+        }
+        print("\n\n\n 🍀 🌀 A special chest Appeared 🍀 🌀  \n\nYour weapon has now a \(character.weapon!.hitGiven) attack points ⚔️")
           // Variable for game statistics
           magicWeaponTrigger += 1
         }
     }
     // Trigger the chest for magic weapon 🏹
      func triggerRandomChest(_ character: Character) -> Bool {
-        if character.weapon is SpecialSword || character.weapon is SpecialWand || character.weapon is SpecialAxe
-        || character.weapon is SpecialIceJet  || character.weapon is SpecialHammer  || character.weapon is SpecialKnife {
+        if character.specialWeapon != nil {
           return true
         }
         return false
@@ -149,14 +136,12 @@ class Game {
 
         while pOne.checkAlives() && pTwo.checkAlives() {
           if isPlayerOneTurn {
-
             print("\n\n--- Player 1️⃣ ,👉 Your turn ! ---")
             playersLoop(playerTurn: pOne, opp: pTwo)
           } else {
             print("\n\n--- Player 2️⃣, 👉 Your turn! ---")
             playersLoop(playerTurn: pTwo, opp: pOne)
           }
-
           isPlayerOneTurn = !isPlayerOneTurn
           turnPlayers += 1
         }

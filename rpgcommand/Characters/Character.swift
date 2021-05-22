@@ -12,7 +12,9 @@ class Character {
     // instance name, life❤️, weapon🪓
     var name: String
     var life: Int
+    var emoji = ""
     var weapon: Weapon?
+    var specialWeapon: SpecialWeapon?
     init(charName: String) {
         life = 0
         self.name = charName
