@@ -28,7 +28,7 @@ class Character {
         }
     }
     // This function give life points to a character allie.
-    func giveLife(character: Character) {
+    func loseLife(character: Character) {
         if cureOthers() == false {
             character.life -= hitGiven()
             print("You took \(hitGiven()) points of life to your ennemy.\n")

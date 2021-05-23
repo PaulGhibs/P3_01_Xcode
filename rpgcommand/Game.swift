@@ -27,11 +27,15 @@ class Game {
     var numberOfCharactersDead = 0
     // Welcoming
     func welcomePrint() {
-        print("👋 Welcome On RPGCommand 🎲 ⚔️ 🎲")
-        print("\n\nTo begin you will be prompt to select 3️⃣ characters in the list by typing a number.")
-        print("\n\nWhen you'll choose one we will ask you a name for the character.")
-        print("\n\n⛔️ If you attend to use the same name for each it's not possible ⛔️")
-        print("\n\n If you choose a sorcerer 🧙‍♂️  or Fairy 🧚‍♀️ you can heal others people of your team at some point ")
+        print("""
+                    \n👋 Welcome On RPGCommand 🎲 ⚔️ 🎲
+                    \nTo begin you will be prompt to select 3️⃣ characters in the list by typing a number.
+                    \nWhen you'll choose one we will ask you a name for the character.
+                    \n\n⛔️ If you attend to use the same name for each it's not possible ⛔️
+                    \nIf you choose a sorcerer 🧙‍♂️  or Fairy 🧚‍♀️ you can heal others people of your team at some point
+            
+            """
+            )
     }
     // Present Character to Player 1️⃣
      func characterPresentation() {
@@ -73,7 +77,7 @@ class Game {
     // cure others ❤️ characters from the team 👨‍👦‍👦
     func cureOthers(with character: Character, on teamMember: Character) {
         // Giving life points trigger
-        character.giveLife(character: teamMember)
+        character.loseLife(character: teamMember)
         print("\n\n2 \(teamMember.name) feels a bit better. \(teamMember.name) life points\(teamMember.life) is now remaining.")
 
         // Variables for game stats
@@ -84,8 +88,7 @@ class Game {
     // Attack ennemy 🤺
      func attack(with character: Character, on opp: Character) {
         // Attack on the ennemie trigger
-        character.giveLife(character: opp)
-
+        character.loseLife(character: opp)
         // Life points stick to zero after an attack instead of going negative
         if opp.life > 0 {
           print("\n \(opp.name) has been attacked.🤺 \(opp.name) life❤️ \(opp.life) points is now remaining.")
@@ -133,7 +136,6 @@ class Game {
     // 🔁 turn loop until characters are dead 🪦
      func gameLoop() {
         var isPlayerOneTurn = true
-
         while pOne.checkAlives() && pTwo.checkAlives() {
           if isPlayerOneTurn {
             print("\n\n--- Player 1️⃣ ,👉 Your turn ! ---")
