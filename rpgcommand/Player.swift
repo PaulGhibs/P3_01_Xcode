@@ -45,12 +45,12 @@ class Player {
             }
             }
             }
-          playerChoice()
+          showTeamsCharacters()
           return listCharactersName
     }
  
     // show teams characters👨‍👦‍👦
-    func playerChoice() {
+    func showTeamsCharacters() {
         print("\n\nYour chosen characters 🤺 are: \n")
         for fighter in charactList {
             print("\(fighter.name)")
@@ -59,7 +59,7 @@ class Player {
     // present for each turn 🔁 which one are still alive
     func presentCharacter() {
         for characters in charactList {
-            print("\(characters.name), \(characters.emoji) \(characters.life) life points,  \(characters.weapon?.emoji ?? "") \(characters.hitGiven()) attacks strenghts.")
+            print("\(characters.name), \(characters.life) life points,  \(characters.weapon?.emoji ?? "") \(characters.hitGiven()) attacks strenghts.")
         }
     }
     // change characters for attacking  🤺 opponent
@@ -67,17 +67,23 @@ class Player {
         var playerChosen: Character?
         while playerChosen == nil {
             guard let userChoice = readLine(),
-                let userChoiceNumber = Int(userChoice), userChoiceNumber > 0 && userChoiceNumber <= charactList.count else {
-                    playerChosen = nil
-                    print("\n!!! Enter a number associated to a character 🤺 to continue !!!\n")
+                  let userChoiceNumber = Int(userChoice),
+                  userChoiceNumber > 0 && userChoiceNumber <= charactList.count else {
+                playerChosen = nil
+                print("\n!!! Enter a number associated to a character 🤺 to continue !!!  \n")
                     continue
                     }
-            playerChosen = charactList[userChoiceNumber]
             if let player = playerChosen, player.life <= 0 {
                 print("\n\n🪦 Dead people cannot be used anymore 🪦\n\nChoose one alive to continue...the game")
                 playerChosen = nil
             }
+            for _ in charactList {
+            playerChosen = charactList[0]
+            playerChosen = charactList[1]
+            playerChosen = charactList[2]
+            }
         }
+
         return playerChosen!
       }
     // check who is still alive in the team 👨‍👦‍👦

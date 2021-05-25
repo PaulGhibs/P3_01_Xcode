@@ -41,7 +41,7 @@ class Game {
      func characterPresentation() {
         let characters = [Warrior(charName: "Warrior"), Sorcerer(charName: "Sorcerer "), Knight(charName: "Knight "), Dwarf(charName: "Dwarf"), Fairy(charName: "Fairy")]
         for character in characters {
-            print("\(character.name) \(character.emoji) a life of \(character.life) and a the weapon \(character.weapon?.name ?? "") \( character.weapon?.emoji ?? "") \(character.weapon?.hitGiven ?? 0) and of hit damages")
+            print("\(character.name ) \(character.emoji) a life of \(character.life) and a the weapon \(character.weapon?.name ?? "") \( character.weapon?.emoji ?? "") \(character.weapon?.hitGiven ?? 0) and of hit damages")
         }
     }
     // Choose character player : 1️⃣ & 2️⃣
@@ -77,7 +77,7 @@ class Game {
     // cure others ❤️ characters from the team 👨‍👦‍👦
     func cureOthers(with character: Character, on teamMember: Character) {
         // Giving life points trigger
-        character.loseLife(character: teamMember)
+        character.giveLife(character: teamMember)
         print("\n\n2 \(teamMember.name) feels a bit better. \(teamMember.name) life points\(teamMember.life) is now remaining.")
 
         // Variables for game stats
@@ -86,26 +86,27 @@ class Game {
 
     }
     // Attack ennemy 🤺
-     func attack(with character: Character, on opp: Character) {
-        // Attack on the ennemie trigger
-        character.loseLife(character: opp)
-        // Life points stick to zero after an attack instead of going negative
-        if opp.life > 0 {
-          print("\n \(opp.name) has been attacked.🤺 \(opp.name) life❤️ \(opp.life) points is now remaining.")
-        } else {
-          opp.life = 0
-          print("\n \(opp.name) has 0️⃣ life💔 point remaining.")
-        }
-        // Variables for statistics
-        lifeTook += character.weapon!.hitGiven
-        damageDone += 1
+    func attack(with character: Character, on opp: Character) {
+       // Attack on the ennemie trigger
+       character.giveLife(character: opp)
+       // Life points stick to zero after an attack instead of going negative
+       if opp.life > 0 {
+         print("\n \(opp.name) has been attacked.🤺 \(opp.name) life❤️ \(opp.life) points is now remaining.")
+       } else {
+         opp.life = 0
+         print("\n \(opp.name) has 0️⃣ life💔 point remaining.")
+       }
+       // Variables for statistics
+       lifeTook += character.weapon!.hitGiven
+       damageDone += 1
 
-        if opp.life <= 0 {
-          print("\n!!! \(opp.name.uppercased()) is in ⚰️!!!")
-          // Variable for game statistics
-          numberOfCharactersDead += 1
-        }
-    }
+       if opp.life <= 0 {
+         print("\n!!! \(opp.name.uppercased()) is in ⚰️!!!")
+         // Variable for game statistics
+         numberOfCharactersDead += 1
+       }
+   }
+
     // turn to turn 🔁
     func playersLoop(playerTurn: Player, opp: Player) {
         print("\n\n--- With what characters 🤺 you want to play ? ---\n")
@@ -113,7 +114,10 @@ class Game {
         playerTurn.presentCharacter()
         // Switch to choose the character to attack  🤺 or heal
         let character = playerTurn.changeCaracter()
-        print("\n\nYou have chosen \(character.name) with a \(character.weapon!.hitGiven) attack points and this weapon  : \(String(describing: character.weapon!.name)).")
+        
+    
+        print("\n\nYou have chosen \(character.name) with a \(character.weapon?.hitGiven ?? 0)  attack points and this weapon  : \(character.weapon?.emoji ?? "").")
+        
 
         // When the lucky chest is thrown in game to randomly get a stronger weapon
         if triggerRandomChest(character) == false {

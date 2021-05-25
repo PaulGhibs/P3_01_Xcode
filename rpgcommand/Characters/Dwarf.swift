@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Sorcerer 👹 character
+// Dwarf 👹 character
 
 internal class Dwarf: Character {
     override init(charName fighterName: String) {
