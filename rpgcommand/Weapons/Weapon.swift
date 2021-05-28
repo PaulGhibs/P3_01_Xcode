@@ -12,11 +12,10 @@ import Foundation
 internal class Weapon {
 
   var hitGiven: Int
-  var name: String?
+  var name: String = ""
   var emoji = ""
   init(hitGiven: Int) {
     self.hitGiven = hitGiven
-    self.name = ""
     self.emoji = ""
   }
 }

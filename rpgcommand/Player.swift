@@ -16,9 +16,9 @@ class Player {
         gameLaunch.characterPresentation()
         while charactList.count < 3 {
             print("\nType a number to choose a character:")
-            if let userChoice = readLine() {
-                guard let userNumber = Int(userChoice), userNumber > 0 else {
-                print("⛔️ Number Only ⛔️!")
+            //
+            guard let userChoice = readLine(), let userNumber = Int(userChoice), userNumber > 0 && userNumber <= Game.characters.count  else {
+                print("⛔️ Number Only / Invalid ⛔️!")
                 continue
             }
             print("\nName your character:")
@@ -27,28 +27,28 @@ class Player {
                     print("⛔️ Text Only ⛔️!")
                     continue
                 }
-            if listCharactersName.contains(nameChoice) {
-                print("⛔️ Name your character uniquely ⛔️!")
-            } else {
-                listCharactersName.append(nameChoice)
-                switch userChoice {
-                case "1": charactList.append(Warrior(charName: "\(nameChoice.capitalized) 🥷"))
-                case "2": charactList.append(Sorcerer(charName: "\(nameChoice.capitalized) 🧙‍♂️"))
-                case "3": charactList.append(Knight(charName: "\(nameChoice.capitalized) 🏇"))
-                case "4": charactList.append(Dwarf(charName: "\(nameChoice.capitalized) 👹"))
-                case "5": charactList.append(Fairy(charName:  "\(nameChoice.capitalized) 🧚‍♀️"))
-                case "6": charactList.append(Evil(charName:  "\(nameChoice.capitalized) 😈"))
-                default:
-                  print("\n!!⛔️  You have not chosen three characters to enter the ring ⛔️ !! \n\n!! Enter a number(1️⃣...6️⃣)associated to a character... !!\n")
+                if listCharactersName.contains(nameChoice) {
+                    print("⛔️ Name your character uniquely ⛔️!")
+                } else {
+                    listCharactersName.append(nameChoice)
+                    if let userNumber = Int(userChoice), userNumber > 0 && userNumber <= Game.characters.count  {
+                        let characterSelected = Game.characters[userNumber-1]
+                        characterSelected.name = "\(nameChoice.capitalized) \(characterSelected.emoji)"
+                        charactList.append(characterSelected)
+                        
+                        continue
+                    } else {
+                        print("\n!!⛔️  You have not chosen three characters to enter the ring ⛔️ !! \n\n!! Enter a number associated to a character... !!\n")
+                    }
+                    
                 }
             }
-            }
-            }
-            }
-          showTeamsCharacters()
-          return listCharactersName
+            
+        }
+        showTeamsCharacters()
+        return listCharactersName
     }
- 
+    
     // show teams characters👨‍👦‍👦
     func showTeamsCharacters() {
         print("\n\nYour chosen characters 🤺 are: \n")
@@ -58,8 +58,8 @@ class Player {
     }
     // present for each turn 🔁 which one are still alive
     func presentCharacter() {
-        for characters in charactList {
-            print("\(characters.name), \(characters.life) life points,  \(characters.weapon?.emoji ?? "") \(characters.hitGiven()) attacks strenghts.")
+        for (index, character) in charactList.enumerated() {
+            print("\(index+1) \(character.name), \(character.life) life points,  \(character.weapon.emoji ) \(character.hitGiven()) attacks strenghts.")
         }
     }
     // change characters for attacking  🤺 opponent
@@ -71,21 +71,18 @@ class Player {
                   userChoiceNumber > 0 && userChoiceNumber <= charactList.count else {
                 playerChosen = nil
                 print("\n!!! Enter a number associated to a character 🤺 to continue !!!  \n")
-                    continue
-                    }
+                continue
+            }
+            
+            playerChosen = charactList[userChoiceNumber-1]
+            
             if let player = playerChosen, player.life <= 0 {
                 print("\n\n🪦 Dead people cannot be used anymore 🪦\n\nChoose one alive to continue...the game")
                 playerChosen = nil
             }
-            for _ in charactList {
-            playerChosen = charactList[0]
-            playerChosen = charactList[1]
-            playerChosen = charactList[2]
-            }
         }
-
         return playerChosen!
-      }
+    }
     // check who is still alive in the team 👨‍👦‍👦
     func checkAlives() -> Bool {
         for characters in charactList {

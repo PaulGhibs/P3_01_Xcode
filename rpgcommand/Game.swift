@@ -25,6 +25,9 @@ class Game {
     var turnPlayers = 0
     // Dead characters
     var numberOfCharactersDead = 0
+    
+    static let characters = [Warrior(charName: "Warrior"), Sorcerer(charName: "Sorcerer "), Knight(charName: "Knight "), Dwarf(charName: "Dwarf"), Fairy(charName: "Fairy"), Evil(charName: "Evil")]
+    
     // Welcoming
     func welcomePrint() {
         print("""
@@ -39,9 +42,10 @@ class Game {
     }
     // Present Character to Player 1️⃣
      func characterPresentation() {
-        let characters = [Warrior(charName: "Warrior"), Sorcerer(charName: "Sorcerer "), Knight(charName: "Knight "), Dwarf(charName: "Dwarf"), Fairy(charName: "Fairy")]
-        for character in characters {
-            print("\(character.name ) \(character.emoji) a life of \(character.life) and a the weapon \(character.weapon?.name ?? "") \( character.weapon?.emoji ?? "") \(character.weapon?.hitGiven ?? 0) and of hit damages")
+      
+        
+        for (index, character) in Game.characters.enumerated() {
+            print("\(index+1) \(character.name ) \(character.emoji) a life of \(character.life) and a the weapon \(character.weapon.name) \( character.weapon.emoji) \(character.weapon.hitGiven) and of hit damages")
         }
     }
     // Choose character player : 1️⃣ & 2️⃣
@@ -62,7 +66,7 @@ class Game {
         for _ in specialWeaponList {
                 character.specialWeapon = SpecialWeapon(hitGiven: 0)
         }
-        print("\n\n\n 🍀 🌀 A special chest Appeared 🍀 🌀  \n\nYour weapon has now a \(character.weapon!.hitGiven) attack points ⚔️")
+            print("\n\n\n 🍀 🌀 A special chest Appeared 🍀 🌀  \n\nYour weapon has now a \(character.weapon.hitGiven) attack points ⚔️")
           // Variable for game statistics
           magicWeaponTrigger += 1
         }
@@ -81,7 +85,7 @@ class Game {
         print("\n\n2 \(teamMember.name) feels a bit better. \(teamMember.name) life points\(teamMember.life) is now remaining.")
 
         // Variables for game stats
-        lifeGive += character.weapon!.hitGiven
+        lifeGive += character.weapon.hitGiven
         lifeWins += 1
 
     }
@@ -97,7 +101,7 @@ class Game {
          print("\n \(opp.name) has 0️⃣ life💔 point remaining.")
        }
        // Variables for statistics
-       lifeTook += character.weapon!.hitGiven
+        lifeTook += character.weapon.hitGiven
        damageDone += 1
 
        if opp.life <= 0 {
@@ -115,15 +119,12 @@ class Game {
         // Switch to choose the character to attack  🤺 or heal
         let character = playerTurn.changeCaracter()
         
-    
-        print("\n\nYou have chosen \(character.name) with a \(character.weapon?.hitGiven ?? 0)  attack points and this weapon  : \(character.weapon?.emoji ?? "").")
+        print("\n\nYou have chosen \(character.name) with a \(character.weapon.hitGiven)  attack points and this weapon  : \(character.weapon.emoji).")
         
-
         // When the lucky chest is thrown in game to randomly get a stronger weapon
         if triggerRandomChest(character) == false {
           randomChest(for: character)
         }
-
         // If the Sorcerer was pick, the player chooses one of his characters to give life points back to
         if character.cureOthers() {
           print("\n\n--- Which one of your characters you want to give life ❤️ points back to? ---")

@@ -13,7 +13,7 @@ class Character {
     var name: String
     var life: Int
     var emoji = ""
-    var weapon: Weapon?
+    var weapon: Weapon = Weapon(hitGiven: 0)
     var specialWeapon: SpecialWeapon?
     init(charName: String) {
         life = 0
@@ -21,11 +21,7 @@ class Character {
     }
     // This function removes life points to a character.
     func hitGiven() -> Int {
-        if let charWeapon = weapon {
-            return charWeapon.hitGiven
-        } else {
-            return 0
-        }
+            return weapon.hitGiven
     }
     // This function give life points to a character ally.
     func giveLife(character: Character) {
