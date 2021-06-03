@@ -7,7 +7,7 @@ RpgCommand is a fighting game for two players.
 This project have been made under OpenClassRooms classes, as a third project.
 
 How can you Play ?
-Terminal ask you ton type name for three players in a team, 
+Terminal ask you to type name for three players in a team, 
 they can choose between six differents characters and choose to fight which opponent to attack.
 
 
